@@ -1,0 +1,50 @@
+Dataset,Test,Metric,Statistic,P_Value,P_Adjusted
+breast_cancer,Friedman,F1,53.01234567901237,1.822284392279322e-11,
+breast_cancer,Wilcoxon: Decision Tree vs Gradient Boosting,F1,54.0,0.006090717662464104,0.012181435324928208
+breast_cancer,Wilcoxon: Decision Tree vs Logistic Regression,F1,0.0,1.2279185361336645e-05,7.367511216801987e-05
+breast_cancer,Wilcoxon: Decision Tree vs Random Forest,F1,20.0,0.0002037784595615102,0.0008145032420864487
+breast_cancer,Wilcoxon: Gradient Boosting vs Logistic Regression,F1,0.0,1.8197386214786344e-05,9.098693107393173e-05
+breast_cancer,Wilcoxon: Gradient Boosting vs Random Forest,F1,52.0,0.008900897956628734,0.012181435324928208
+breast_cancer,Wilcoxon: Logistic Regression vs Random Forest,F1,20.0,0.00020362581052161218,0.0008145032420864487
+diabetes_regression,Friedman,RMSE,57.432000000000016,2.078214177608211e-12,
+diabetes_regression,Wilcoxon: Decision Tree vs Gradient Boosting,RMSE,0.0,5.960464477539063e-08,3.5762786865234375e-07
+diabetes_regression,Wilcoxon: Decision Tree vs Linear Regression,RMSE,0.0,5.960464477539063e-08,3.5762786865234375e-07
+diabetes_regression,Wilcoxon: Decision Tree vs Random Forest,RMSE,0.0,5.960464477539063e-08,3.5762786865234375e-07
+diabetes_regression,Wilcoxon: Gradient Boosting vs Linear Regression,RMSE,20.0,2.2113323211669922e-05,4.4226646423339844e-05
+diabetes_regression,Wilcoxon: Gradient Boosting vs Random Forest,RMSE,102.0,0.10731470584869385,0.10731470584869385
+diabetes_regression,Wilcoxon: Linear Regression vs Random Forest,RMSE,16.0,1.0073184967041016e-05,3.0219554901123047e-05
+digits_classification,Friedman,F1,69.52800000000002,5.386707456150276e-15,
+digits_classification,Wilcoxon: Decision Tree vs Gradient Boosting,F1,0.0,5.960464477539063e-08,3.5762786865234375e-07
+digits_classification,Wilcoxon: Decision Tree vs Logistic Regression,F1,0.0,5.960464477539063e-08,3.5762786865234375e-07
+digits_classification,Wilcoxon: Decision Tree vs Random Forest,F1,0.0,5.960464477539063e-08,3.5762786865234375e-07
+digits_classification,Wilcoxon: Gradient Boosting vs Logistic Regression,F1,0.0,5.960464477539063e-08,3.5762786865234375e-07
+digits_classification,Wilcoxon: Gradient Boosting vs Random Forest,F1,0.0,5.960464477539063e-08,3.5762786865234375e-07
+digits_classification,Wilcoxon: Logistic Regression vs Random Forest,F1,60.0,0.004604637622833252,0.004604637622833252
+iris_classification,Friedman,F1,11.857142857142899,0.007888899059219153,
+iris_classification,Wilcoxon: Decision Tree vs Gradient Boosting,F1,0.0,0.004920313984442514,0.029521883906655087
+iris_classification,Wilcoxon: Decision Tree vs Logistic Regression,F1,17.5,0.027430259927205655,0.10972103970882262
+iris_classification,Wilcoxon: Decision Tree vs Random Forest,F1,3.0,0.012230642140651594,0.06115321070325797
+iris_classification,Wilcoxon: Gradient Boosting vs Logistic Regression,F1,13.0,0.8655343251561596,1.0
+iris_classification,Wilcoxon: Gradient Boosting vs Random Forest,F1,6.5,0.7854947471183542,1.0
+iris_classification,Wilcoxon: Logistic Regression vs Random Forest,F1,16.5,0.8313799771067277,1.0
+synthetic_retail_churn,Friedman,F1,52.72800000000001,2.0952460500692852e-11,
+synthetic_retail_churn,Wilcoxon: Decision Tree vs Gradient Boosting,F1,2.0,1.7881393432617188e-07,8.940696716308594e-07
+synthetic_retail_churn,Wilcoxon: Decision Tree vs Logistic Regression,F1,0.0,5.960464477539063e-08,3.5762786865234375e-07
+synthetic_retail_churn,Wilcoxon: Decision Tree vs Random Forest,F1,26.0,6.365776062011719e-05,0.00019097328186035156
+synthetic_retail_churn,Wilcoxon: Gradient Boosting vs Logistic Regression,F1,26.0,6.365776062011719e-05,0.00019097328186035156
+synthetic_retail_churn,Wilcoxon: Gradient Boosting vs Random Forest,F1,93.0,0.0626264214515686,0.0626264214515686
+synthetic_retail_churn,Wilcoxon: Logistic Regression vs Random Forest,F1,3.0,2.980232238769531e-07,1.1920928955078125e-06
+synthetic_retail_sales,Friedman,RMSE,67.464,1.4898916540724342e-14,
+synthetic_retail_sales,Wilcoxon: Decision Tree vs Gradient Boosting,RMSE,0.0,5.960464477539063e-08,3.5762786865234375e-07
+synthetic_retail_sales,Wilcoxon: Decision Tree vs Linear Regression,RMSE,0.0,5.960464477539063e-08,3.5762786865234375e-07
+synthetic_retail_sales,Wilcoxon: Decision Tree vs Random Forest,RMSE,0.0,5.960464477539063e-08,3.5762786865234375e-07
+synthetic_retail_sales,Wilcoxon: Gradient Boosting vs Linear Regression,RMSE,0.0,5.960464477539063e-08,3.5762786865234375e-07
+synthetic_retail_sales,Wilcoxon: Gradient Boosting vs Random Forest,RMSE,67.0,0.008822321891784668,0.008822321891784668
+synthetic_retail_sales,Wilcoxon: Linear Regression vs Random Forest,RMSE,1.0,1.1920928955078125e-07,3.5762786865234375e-07
+wine,Friedman,F1,63.078602620087366,1.292006880695049e-13,
+wine,Wilcoxon: Decision Tree vs Gradient Boosting,F1,21.0,2.664327621459961e-05,0.00010657310485839844
+wine,Wilcoxon: Decision Tree vs Logistic Regression,F1,0.0,5.960464477539063e-08,3.5762786865234375e-07
+wine,Wilcoxon: Decision Tree vs Random Forest,F1,0.0,5.960464477539063e-08,3.5762786865234375e-07
+wine,Wilcoxon: Gradient Boosting vs Logistic Regression,F1,4.5,4.844995909521038e-05,0.00014534987728563115
+wine,Wilcoxon: Gradient Boosting vs Random Forest,F1,7.0,0.0002532800272204937,0.0005065600544409874
+wine,Wilcoxon: Logistic Regression vs Random Forest,F1,24.5,0.1408719930081559,0.1408719930081559

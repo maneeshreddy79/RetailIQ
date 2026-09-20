@@ -1,0 +1,22 @@
+Dataset,Test,Metric,Statistic,P_Value
+Breast Cancer,Friedman,F1,13.560000000000002,0.0035695719978437583
+Breast Cancer,Wilcoxon: Decision Tree vs Gradient Boosting,F1,0.0,0.0625
+Breast Cancer,Wilcoxon: Decision Tree vs Logistic Regression,F1,0.0,0.0625
+Breast Cancer,Wilcoxon: Decision Tree vs Random Forest,F1,0.0,0.0625
+Breast Cancer,Wilcoxon: Gradient Boosting vs Logistic Regression,F1,0.0,0.0625
+Breast Cancer,Wilcoxon: Gradient Boosting vs Random Forest,F1,7.0,1.0
+Breast Cancer,Wilcoxon: Logistic Regression vs Random Forest,F1,0.0,0.0625
+Wine,Friedman,F1,13.595744680851066,0.0035103961170561138
+Wine,Wilcoxon: Decision Tree vs Gradient Boosting,F1,0.0,0.0625
+Wine,Wilcoxon: Decision Tree vs Logistic Regression,F1,0.0,0.0625
+Wine,Wilcoxon: Decision Tree vs Random Forest,F1,0.0,0.0625
+Wine,Wilcoxon: Gradient Boosting vs Logistic Regression,F1,0.0,0.0625
+Wine,Wilcoxon: Gradient Boosting vs Random Forest,F1,0.0,0.125
+Wine,Wilcoxon: Logistic Regression vs Random Forest,F1,1.5,0.75
+Diabetes,Friedman,RMSE,11.159999999999997,0.010891421468579314
+Diabetes,Wilcoxon: Decision Tree vs Gradient Boosting,RMSE,0.0,0.0625
+Diabetes,Wilcoxon: Decision Tree vs Linear Regression,RMSE,0.0,0.0625
+Diabetes,Wilcoxon: Decision Tree vs Random Forest,RMSE,0.0,0.0625
+Diabetes,Wilcoxon: Gradient Boosting vs Linear Regression,RMSE,2.0,0.1875
+Diabetes,Wilcoxon: Gradient Boosting vs Random Forest,RMSE,4.0,0.4375
+Diabetes,Wilcoxon: Linear Regression vs Random Forest,RMSE,2.0,0.1875
