@@ -455,6 +455,21 @@ def inject_css(mode: str) -> str:
         margin-bottom: 12px;
         opacity: 0.5;
     }}
+
+    /* ===== Footer ===== */
+    .riq-footer {{
+        text-align: center;
+        padding: 24px 0 8px 0;
+        margin-top: 32px;
+        border-top: 1px solid {card_border};
+        font-size: 0.78rem;
+        color: {muted};
+        line-height: 1.5;
+    }}
+    .riq-footer-brand {{
+        font-weight: 600;
+        color: {t['primary']};
+    }}
     </style>
     """
 

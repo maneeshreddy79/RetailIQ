@@ -72,7 +72,7 @@ def render_recommendations(df, profile, mode, selected_target, resolved_task, da
     st.caption("Recommendations derived from measured model, anomaly and forecast signals.")
 
     if st.button("Generate ML-Guided Recommendations", key="run_ml_recs"):
-        from src.advanced_ml import ml_guided_recommendations, run_advanced_predictive, run_supervised
+        from src.advanced_ml import ml_guided_recommendations, run_advanced_predictive
         from src.ml_analyzer import run_anomaly_detection as run_anom, run_supervised as run_sup
 
         rec_ml_target = selected_target if selected_target and selected_target != "— No target / unsupervised —" else None
@@ -82,7 +82,7 @@ def render_recommendations(df, profile, mode, selected_target, resolved_task, da
             adv_for_rec = run_advanced_predictive(df, rec_ml_target, rec_task) if rec_ml_target else {}
             anomaly_for_rec = run_anom(df, 0.05, exclude_columns=[rec_ml_target] if rec_ml_target else None)
             forecast_for_rec = run_forecast(df, date_cols[0], metric, 7) if date_cols and metric else {}
-            baseline_for_rec = run_supervised(df, rec_ml_target, rec_task, test_size=0.20) if rec_ml_target else {}
+            baseline_for_rec = run_sup(df, rec_ml_target, rec_task, test_size=0.20) if rec_ml_target else {}
             recs_ml = ml_guided_recommendations(adv_for_rec, baseline_for_rec, anomaly_for_rec, forecast_for_rec)
 
         if recs_ml:

@@ -21,7 +21,7 @@ from src.recommender import generate_recommendations
 from src.ml_analyzer import detect_target, infer_task, target_candidates, reference_label_columns
 from src.ui.theme import inject_css, get_theme
 from src.ui.navigation import render_sidebar, ALL_PAGES
-from src.ui.components import choose_metric, choose_dimension
+from src.ui.components import choose_metric, choose_dimension, footer
 from src.ui.pages.landing import render_landing
 from src.ui.pages.overview import render_dashboard
 from src.ui.pages.data import render_data
@@ -217,6 +217,7 @@ def main():
     # Main content area
     if not has_data:
         render_landing(mode)
+        footer(mode)
         return
 
     # Get data from session state
@@ -291,6 +292,8 @@ def main():
     else:
         st.session_state["current_page"] = "dashboard"
         st.rerun()
+
+    footer(mode)
 
 
 if __name__ == "__main__":

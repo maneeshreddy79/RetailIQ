@@ -162,3 +162,14 @@ def safe_metric_col_value(df, col):
 def no_data_message(page_name: str):
     """Show a consistent no-data message for any page."""
     st.info(f"Upload a dataset to access the {page_name} page.")
+
+
+def footer(mode: str = "dark"):
+    """Render a minimal professional footer."""
+    t = get_theme(mode)
+    st.markdown(
+        f'<div class="riq-footer">'
+        f'<span class="riq-footer-brand">RetailIQ</span> &nbsp; Adaptive Analytics & Business Insight System'
+        f'</div>',
+        unsafe_allow_html=True,
+    )
