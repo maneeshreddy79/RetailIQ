@@ -143,8 +143,9 @@ def render_sidebar(mode: str, current_page: str, has_data: bool):
 
 
 def _render_filters():
-    """Render dashboard filters in the sidebar."""
-    df = st.session_state.get("filtered_df")
+    """Render dashboard filter widgets in the sidebar. Does not apply filtering —
+    app.py's apply_filters() reads the widget keys after rendering."""
+    df = st.session_state.get("cleaned_df")
     clean_profile = st.session_state.get("clean_profile")
     if df is None or clean_profile is None:
         return
@@ -152,11 +153,10 @@ def _render_filters():
     cat_cols = clean_profile["categorical_columns"]
     date_cols = clean_profile["date_columns"]
 
-    selected = {}
     for col in cat_cols[:4]:
         vals = sorted(df[col].dropna().astype(str).unique().tolist())
         if 1 < len(vals) <= 100:
-            selected[col] = st.multiselect(
+            st.multiselect(
                 col.replace("_", " ").title(),
                 vals,
                 default=vals,
@@ -165,19 +165,10 @@ def _render_filters():
 
     if date_cols:
         dc = date_cols[0]
-        df[dc] = pd.to_datetime(df[dc], errors="coerce")
-        valid_dates = df[dc].dropna()
+        temp = df.copy()
+        temp[dc] = pd.to_datetime(temp[dc], errors="coerce")
+        valid_dates = temp[dc].dropna()
         if not valid_dates.empty:
             start, end = valid_dates.min().date(), valid_dates.max().date()
-            date_range = st.date_input("Date range", value=(start, end), min_value=start, max_value=end)
-            if isinstance(date_range, tuple) and len(date_range) == 2:
-                df = df[df[dc].dt.date.between(date_range[0], date_range[1])]
-                st.session_state["filtered_df"] = df
-
-    if selected:
-        for col, vals in selected.items():
-            if vals:
-                df = df[df[col].astype(str).isin(vals)]
-                st.session_state["filtered_df"] = df
-
-    st.caption(f"Showing {len(df):,} of {st.session_state.get('cleaned_row_count', 0):,} rows")
+            st.date_input("Date range", value=(start, end), min_value=start, max_value=end,
+                           key="sidebar_date_range")

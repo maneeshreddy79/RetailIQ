@@ -73,7 +73,7 @@ def load_data(uploaded):
 
     profile = analyze_dataset(raw_df)
     plan = build_cleaning_plan(raw_df)
-    cleaned_df, cleaning_log = clean_dataset(raw_df)
+    cleaned_df, cleaning_log = clean_dataset(raw_df, plan)
     clean_profile = analyze_dataset(cleaned_df)
 
     rec_context = {
@@ -152,67 +152,21 @@ def main():
     has_data = st.session_state.get("data_loaded", False)
 
     # Render sidebar (handles upload when no data, nav + filters when data loaded)
-    # We need a custom sidebar approach since Streamlit's sidebar is special
-    with st.sidebar:
-        from src.ui.theme import logo_wordmark
-        st.markdown(logo_wordmark(36, 36, mode), unsafe_allow_html=True)
-        st.markdown("---")
+    render_sidebar(mode, st.session_state["current_page"], has_data)
 
-        if not has_data:
-            st.markdown("#### Upload Dataset")
-            uploaded = st.file_uploader("Upload CSV / Excel", type=["csv", "xlsx", "xls"],
-                                        label_visibility="collapsed")
-            if uploaded is not None:
-                st.session_state["uploaded_file"] = uploaded
-                st.rerun()
-        else:
-            # Navigation
-            from src.ui.navigation import NAV_SECTIONS, _nav_icon
-            for section in NAV_SECTIONS:
-                st.markdown(f'<div class="riq-nav-section">{section["label"]}</div>', unsafe_allow_html=True)
-                for item in section["items"]:
-                    is_active = st.session_state["current_page"] == item["id"]
-                    if st.button(
-                        item["label"],
-                        key=f"nav_{item['id']}",
-                        use_container_width=True,
-                    ):
-                        st.session_state["current_page"] = item["id"]
-                        st.rerun()
+    # Apply filters after sidebar widgets are rendered
+    if has_data:
+        apply_filters()
+        st.sidebar.caption(f"Showing {len(st.session_state.get('filtered_df', pd.DataFrame())):,} of {st.session_state.get('cleaned_row_count', 0):,} rows")
 
-            st.markdown("---")
-
-            # Theme toggle
-            toggle_col1, toggle_col2 = st.columns([3, 1])
-            with toggle_col1:
-                st.caption("Theme")
-            with toggle_col2:
-                if st.button("🌙" if mode == "dark" else "☀️", key="theme_toggle"):
-                    st.session_state["theme_mode"] = "light" if mode == "dark" else "dark"
-                    st.rerun()
-
-            st.markdown("---")
-
-            # File info
-            st.success(f"Loaded: {st.session_state.get('uploaded_name', '')}")
-            st.caption(f"{st.session_state.get('row_count', 0):,} rows · {st.session_state.get('col_count', 0):,} columns")
-
-            st.markdown("---")
-
-            # Dashboard filters
-            st.markdown("#### Dashboard Filters")
-            apply_filters()
-            st.caption(f"Showing {len(st.session_state.get('filtered_df', pd.DataFrame())):,} of {st.session_state.get('cleaned_row_count', 0):,} rows")
-
-            st.markdown("---")
-
-            # Upload new file
-            new_upload = st.file_uploader("Upload new dataset", type=["csv", "xlsx", "xls"],
-                                          label_visibility="collapsed")
-            if new_upload is not None:
-                st.session_state["data_loaded"] = False
-                st.session_state["uploaded_file"] = new_upload
-                st.rerun()
+        # Upload new file
+        st.sidebar.markdown("---")
+        new_upload = st.sidebar.file_uploader("Upload new dataset", type=["csv", "xlsx", "xls"],
+                                      label_visibility="collapsed")
+        if new_upload is not None:
+            st.session_state["data_loaded"] = False
+            st.session_state["uploaded_file"] = new_upload
+            st.rerun()
 
     # Main content area
     if not has_data:

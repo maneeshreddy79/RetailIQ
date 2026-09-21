@@ -2,7 +2,7 @@
 
 import streamlit as st
 
-from .theme import logo_svg, get_theme
+from ..theme import logo_svg, get_theme
 
 
 def render_landing(mode: str):
